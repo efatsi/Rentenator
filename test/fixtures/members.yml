@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  bills_paid: 1.5
+  balance: 1.5
+
+two:
+  name: MyString
+  bills_paid: 1.5
+  balance: 1.5

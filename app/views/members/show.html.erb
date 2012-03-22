@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @member.name %>
+</p>
+
+
+<b>Family:&nbsp;&nbsp;</b>
+	  <%= link_to @member.family.name, family_path(@member.family) %><br />
+
+<p>
+  <b>Bills paid:</b>
+  <%= @member.bills_paid %>
+</p>
+
+<p>
+  <b>Balance:</b>
+  <%= @member.balance %>
+</p>
+
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>

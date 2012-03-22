@@ -1,0 +1,18 @@
+<table>
+	<tr valign="top">	
+		<td width="300">
+			<%= render :partial => "family_data" %>
+		</td>
+		<td width="10">&nbsp;</td>
+		<td width="250">
+			<% unless @current_members.empty? %>
+			  <%= render :partial => "current_members" %>
+			<% end %>
+		</td>
+	</tr>
+</table>
+<p class="smtext">&nbsp;</p>
+<p>&nbsp;
+
+<%= link_to 'Edit', edit_family_path(@family) %> |
+<%= link_to 'Back', families_path %>
