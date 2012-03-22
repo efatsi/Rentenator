@@ -5,9 +5,9 @@ class Member < ActiveRecord::Base
 	#	Relationships
 	belongs_to :family
 
-	
 	def adjust_family_size
-		member.family.size += 1
+		self.family.size = self.family.members.length
+		self.family.save
 	end
 	
 end

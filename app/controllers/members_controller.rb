@@ -25,7 +25,7 @@ class MembersController < ApplicationController
   # GET /members/new.json
   def new
     @member = Member.new
-
+		
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @member }
@@ -44,6 +44,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
+      	@member.adjust_family_size
         format.html { redirect_to @member, notice: 'Member was successfully created.' }
         format.json { render json: @member, status: :created, location: @member }
       else
@@ -73,8 +74,9 @@ class MembersController < ApplicationController
   # DELETE /members/1.json
   def destroy
     @member = Member.find(params[:id])
+    @family = @member.family
     @member.destroy
-
+		@family.adjust_family_size
     respond_to do |format|
       format.html { redirect_to members_url }
       format.json { head :no_content }
