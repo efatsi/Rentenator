@@ -1,0 +1,8 @@
+<h2>Member Information:</h2>
+
+<b>Name:&nbsp;&nbsp;</b><br>
+  <%= @member.name %> <br /><br />
+  
+<b>Bills Paid:&nbsp;&nbsp;</b><br>
+  <%= @member.bills_paid %> <br /><br />
+  

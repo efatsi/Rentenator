@@ -1,24 +1,22 @@
 <p id="notice"><%= notice %></p>
+<table>
+	<tr valign="top">	
+		<td width="300">
+			<%= render :partial => "member_data" %>
+		</td>
+		<td width="10">&nbsp;</td>
+		<td width="250">
+			<% unless @current_payments.empty? %>
+			  <%= render :partial => "current_payments" %>
+			<% end %>
+		</td>
+	</tr>
+</table>
+<p class="sm
+<%= link_to ''%>
+<b><%= link_to 'Delete Member', @member, confirm: 'Are you sure?', method: :delete %> </b> <br /><br />
+<%= link_to 'Families', families_path %> |
+<%= link_to 'Members', members_path %> |
+<%= link_to 'Payments', payments_path %>
 
-<p>
-  <b>Name:</b>
-  <%= @member.name %>
-</p>
 
-
-<b>Family:&nbsp;&nbsp;</b>
-	  <%= link_to @member.family.name, family_path(@member.family) %><br />
-
-<p>
-  <b>Bills paid:</b>
-  <%= @member.bills_paid %>
-</p>
-
-<p>
-  <b>Balance:</b>
-  <%= @member.balance %>
-</p>
-
-
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>

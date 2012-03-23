@@ -11,13 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120322045237) do
+ActiveRecord::Schema.define(:version => 20120323154124) do
 
   create_table "families", :force => true do |t|
     t.string   "name"
-    t.integer  "size",       :default => 0
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "members", :force => true do |t|
@@ -27,6 +26,14 @@ ActiveRecord::Schema.define(:version => 20120322045237) do
     t.float    "balance",    :default => 0.0
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "payments", :force => true do |t|
+    t.integer  "member_id"
+    t.string   "name"
+    t.float    "amount"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

@@ -14,6 +14,9 @@ class MembersController < ApplicationController
   # GET /members/1.json
   def show
     @member = Member.find(params[:id])
+    
+		# get all the payments of this member
+		@current_payments = @member.payments.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,7 +47,6 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-      	@member.adjust_family_size
         format.html { redirect_to @member, notice: 'Member was successfully created.' }
         format.json { render json: @member, status: :created, location: @member }
       else
@@ -74,12 +76,16 @@ class MembersController < ApplicationController
   # DELETE /members/1.json
   def destroy
     @member = Member.find(params[:id])
-    @family = @member.family
     @member.destroy
-		@family.adjust_family_size
     respond_to do |format|
       format.html { redirect_to members_url }
       format.json { head :no_content }
     end
+  end
+  
+  def add_10
+  	@member = mber.find(params[:id])
+  	@member.update_attributes(:balance => :balance + 10)
+  	format.html { redirect_to @member, notice: "10 bucks added to balance" }
   end
 end

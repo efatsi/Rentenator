@@ -1,0 +1,12 @@
+<h2>Current Payments:</h2>
+<table class="datagrid">
+  <thead class="datagrid">
+  </thead>
+  
+<% for member in @current_payments %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td align="center">&nbsp;<%= link_to payment.name, payment_path(payment) %></td>
+  </tr>
+<% end %>
+</table>
+<p class="supertiny">&nbsp;</p>

@@ -14,12 +14,15 @@ class FamiliesController < ApplicationController
   # GET /families/1.json
   def show
     @family = Family.find(params[:id])
-
+		
+		# get all the members of this family
+		@current_members = @family.members.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @family }
     end
   end
+ 
 
   # GET /families/new
   # GET /families/new.json

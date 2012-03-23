@@ -17,6 +17,7 @@ class FamiliesController < ApplicationController
 		
 		# get all the members of this family
 		@current_members = @family.members.all
+		
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @family }

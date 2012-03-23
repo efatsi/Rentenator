@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Amount:</b>
+  <%= @payment.amount %>
+</p>
+
+
+<%= link_to 'Back', payments_path %> |
+<%= link_to 'Members', members_path %> |
+<%= link_to 'Families', families_path %>
