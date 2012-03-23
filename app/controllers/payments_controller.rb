@@ -58,10 +58,13 @@ class PaymentsController < ApplicationController
   # PUT /payments/1.json
   def update
     @payment = Payment.find(params[:id])
+    @old_amount = @payment.amount
 
     respond_to do |format|
       if @payment.update_attributes(params[:payment])
-        format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
+    		@payment.update_member_balance(@old_amount * -1)
+      	@payment.update_member_balance(@payment.amount * -1)
+      	format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -74,8 +77,7 @@ class PaymentsController < ApplicationController
   # DELETE /payments/1.json
   def destroy
     @payment = Payment.find(params[:id])
-    @payment.update_member_balance(@payment.amount * -1)
-    
+   	@payment.update_member_balance(@payment.amount * -1)
     @payment.destroy
 
     respond_to do |format|

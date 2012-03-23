@@ -76,11 +76,18 @@ class MembersController < ApplicationController
   # DELETE /members/1.json
   def destroy
     @member = Member.find(params[:id])
-    @member.destroy
-    respond_to do |format|
-      format.html { redirect_to members_url }
-      format.json { head :no_content }
-    end
+    can_delete = @member.balance == 0
+		@member.destroy if can_delete
+		  respond_to do |format|
+		  	if can_delete
+		  		format.html { redirect_to members_url }
+		  	else
+		  		format.html { redirect_to @member, notice: "Cannot delete this member since balance is not zero" }
+		    end
+		    format.json { head :no_content }
+		  end
+#		else
+#			format.html { redirect_to members_url, notice: 'Can not delete #{@member.name}, balance is not 0' }
   end
   
   def add_10

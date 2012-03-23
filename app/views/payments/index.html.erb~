@@ -10,9 +10,10 @@
 
 <% @payments.each do |payment| %>
   <tr>
-    <td><%= payment.name.cap %></td>
+    <td><%= payment.name %></td>
     <td><%= payment.amount %></td>
     <td><%= link_to 'Show', payment %></td>
+    <td><%= link_to 'Edit', edit_member_path(member) %></td>
     <td><%= link_to 'Destroy', payment, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>

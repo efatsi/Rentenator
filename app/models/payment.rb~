@@ -8,9 +8,11 @@ class Payment < ActiveRecord::Base
 		mem = self.member
 		fam = mem.family
 		
+		return nil if (!mem || !fam)
+		
 		mem.bills_paid += amount
 		mem.balance += amount
-#		mem.save
+		mem.save
 		
 		fam_size = fam.members.length
 		fam.members.each do |m|
