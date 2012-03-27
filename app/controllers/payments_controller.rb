@@ -35,6 +35,11 @@ class PaymentsController < ApplicationController
   # GET /payments/1/edit
   def edit
     @payment = Payment.find(params[:id])
+
+    respond_to do |format|
+      format.html { redirect_to @payment, notice: 'Can\'t change it!' }
+      format.json { render json: @payment }
+    end
   end
 
   # POST /payments
@@ -63,7 +68,7 @@ class PaymentsController < ApplicationController
     respond_to do |format|
       if @payment.update_attributes(params[:payment])
     		@payment.update_member_balance(@old_amount * -1)
-      	@payment.update_member_balance(@payment.amount * -1)
+      	@payment.update_member_balance(@payment.amount)
       	format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
         format.json { head :no_content }
       else
