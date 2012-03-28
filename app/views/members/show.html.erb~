@@ -12,7 +12,7 @@
 		</td>
 	</tr>
 </table>
-<%= link_to "Add ten to balance", add_ten_member_path(@member) %>
+<%= button_to "Add ten to balance", add_ten_member_path(@member) %>
 
  <%= form_for @member do |t| %>
      <%= t.hidden_field :balance, :value=>@member.balance - 10 %>

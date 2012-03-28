@@ -6,7 +6,6 @@
       <th>Family</th>
       <th>Bills Paid</th>
       <th>Balance</th>
-      <th>Created at</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -15,9 +14,8 @@
       <tr>
         <td><%= link_to member.name, member_path(member) %></td>
         <td><%= link_to member.family.name, family_path(member.family) %></td>
-        <td><%= member.bills_paid %></td>
-        <td><%= member.balance %></td>
-        <td><%= member.created_at %></td>
+        <td><%= (member.bills_paid).round/100.0 %></td>
+        <td><%= (member.balance*100).round/100.0 %></td>
         <td>
           <%= link_to 'Edit', edit_member_path(member), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', member_path(member), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>

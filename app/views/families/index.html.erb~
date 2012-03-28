@@ -3,7 +3,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Created at</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -11,7 +10,6 @@
     <% @families.each do |family| %>
       <tr>
         <td><%= link_to family.name, family_path(family) %></td>
-        <td><%= family.created_at %></td>
         <td>
           <%= link_to 'Edit', edit_family_path(family), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', family_path(family), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
