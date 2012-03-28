@@ -90,9 +90,11 @@ class MembersController < ApplicationController
 #			format.html { redirect_to members_url, notice: 'Can not delete #{@member.name}, balance is not 0' }
   end
   
-  def add_10
-  	@member = mber.find(params[:id])
-  	@member.update_attributes(:balance => :balance + 10)
-  	format.html { redirect_to @member, notice: "10 bucks added to balance" }
+  def add_ten
+  	@member = Member.find(params[:id])
+#  	@member.update_attributes(:balance => @member.balance + 10)
+  	@member.balance = @member.balance + 10
+  	@member.save
+  	redirect_to @member
   end
 end

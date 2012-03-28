@@ -4,6 +4,9 @@ Rentenator::Application.routes.draw do
   resources :families
 
 	resources :members
+	resources :members do
+  	post :add_ten, :on => :member
+	end 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

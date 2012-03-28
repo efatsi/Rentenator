@@ -1,24 +1,29 @@
-<h1>Member</h1>
+<p id="notice"><%= notice %></p>
+<table>
+	<tr valign="top">	
+		<td width="300">
+			<%= render :partial => "member_data" %>
+		</td>
+		<td width="10">&nbsp;</td>
+		<td width="250">
+			<% unless @current_payments.empty? %>
+			  <%= render :partial => "current_payments" %>
+			<% end %>
+		</td>
+	</tr>
+</table>
+<%= link_to "Add ten to balance", add_ten_member_path(@member) %>
 
-<p>
-  <b>Family</b><br>
-  <%= link_to @member.family.name, family_path(@member.family) %>
-</p>
+ <%= form_for @member do |t| %>
+     <%= t.hidden_field :balance, :value=>@member.balance - 10 %>
+     <%= t.submit "Subtract 10 from balance" %>
+   <% end %>
 
-<p>
-  <b>Name</b><br>
-  <%= @member.name %>
-</p>
+   <%= form_for @member do |t| %>
+     <%= t.hidden_field :balance, :value=>@member.balance + 10 %>
+     <%= t.submit "Add 10 to balance" %>
+   <% end %>
 
-<p>
-  <b>Bills paid</b><br>
-  <%= @member.bills_paid %>
-</p>
-
-<p>
-  <b>Balance</b><br>
-  <%= @member.balance %>
-</p>
 
 <div class="form-actions">
   <%= link_to 'Back', members_path, :class => 'btn'  %>

@@ -79,16 +79,22 @@ class MembersController < ApplicationController
     can_delete = @member.balance == 0
 		@member.destroy if can_delete
 		  respond_to do |format|
-		    format.html { redirect_to @member, notice: "Can't delete me!" }
+		  	if can_delete
+		  		format.html { redirect_to members_url }
+		  	else
+		  		format.html { redirect_to @member, notice: "Cannot delete this member since balance is not zero" }
+		    end
 		    format.json { head :no_content }
 		  end
 #		else
 #			format.html { redirect_to members_url, notice: 'Can not delete #{@member.name}, balance is not 0' }
   end
   
-  def add_10
-  	@member = mber.find(params[:id])
-  	@member.update_attributes(:balance => :balance + 10)
+  def add_ten
+  	@member = Member.find(params[:id])
+#  	@member.update_attributes(:balance => @member.balance + 10)
+  	@member.balance = @member.balance + 10
+  	@member.save
   	format.html { redirect_to @member, notice: "10 bucks added to balance" }
   end
 end
