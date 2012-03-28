@@ -1,6 +1,4 @@
-<h2>Family Information:</h2>
+<h1>Family</h1>
 <b>Name:&nbsp;&nbsp;</b><br>
   <%= @family.name %> <br /><br />
   
-<b>Size:&nbsp;&nbsp;</b><br>
-  <%= @family.size %><br /><br />

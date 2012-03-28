@@ -6,7 +6,7 @@ class Member < ActiveRecord::Base
 	has_many :payments, :dependent => :destroy 
 
 	# Validations
-	validates_presence_of :name
+	validates_presence_of :name, :family_id
 	
 	
 end

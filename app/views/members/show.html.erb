@@ -1,24 +1,17 @@
-<h1>Member</h1>
-
-<p>
-  <b>Family</b><br>
-  <%= @member.family_id %>
-</p>
-
-<p>
-  <b>Name</b><br>
-  <%= @member.name %>
-</p>
-
-<p>
-  <b>Bills paid</b><br>
-  <%= @member.bills_paid %>
-</p>
-
-<p>
-  <b>Balance</b><br>
-  <%= @member.balance %>
-</p>
+<p id="notice"><%= notice %></p>
+<table>
+	<tr valign="top">	
+		<td width="300">
+			<%= render :partial => "member_data" %>
+		</td>
+		<td width="10">&nbsp;</td>
+		<td width="250">
+			<% unless @current_payments.empty? %>
+			  <%= render :partial => "current_payments" %>
+			<% end %>
+		</td>
+	</tr>
+</table>
 
 <div class="form-actions">
   <%= link_to 'Back', members_path, :class => 'btn'  %>

@@ -1,19 +1,12 @@
-<table>
-	<tr valign="top">	
-		<td width="300">
-			<%= render :partial => "family_data" %>
-		</td>
-		<td width="10">&nbsp;</td>
-		<td width="250">
-			<% unless @current_members.empty? %>
-			  <%= render :partial => "current_members" %>
-			<% end %>
-		</td>
-	</tr>
-</table>
-<p class="smtext">&nbsp;</p>
-<p>&nbsp;
+<h1>Family</h1>
 
-<%= link_to 'Edit', edit_family_path(@family) %> |
-<%= link_to 'Members', members_path %> |
-<%= link_to 'Families', families_path %>
+<p>
+  <b>Name</b><br>
+  <%= @family.name %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', families_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_family_path(@family), :class => 'btn' %>
+  <%= link_to 'Delete', family_path(@family), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

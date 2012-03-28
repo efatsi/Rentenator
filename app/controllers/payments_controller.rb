@@ -33,13 +33,8 @@ class PaymentsController < ApplicationController
   end
 
   # GET /payments/1/edit
-  def edit
+	def edit
     @payment = Payment.find(params[:id])
-
-    respond_to do |format|
-      format.html { redirect_to @payment, notice: 'Can\'t change it!' }
-      format.json { render json: @payment }
-    end
   end
 
   # POST /payments
@@ -49,7 +44,7 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-      	@payment.update_member_balance(@payment.amount)
+      	@payment.update_member_balance(@payment.amount, @payment.member)
         format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
         format.json { render json: @payment, status: :created, location: @payment }
       else
@@ -63,12 +58,13 @@ class PaymentsController < ApplicationController
   # PUT /payments/1.json
   def update
     @payment = Payment.find(params[:id])
-    @old_amount = @payment.amount
+    @old_amount = @payment.amount * -1
+    @old_member = @payment.member
 
     respond_to do |format|
       if @payment.update_attributes(params[:payment])
-    		@payment.update_member_balance(@old_amount * -1)
-      	@payment.update_member_balance(@payment.amount)
+    		@payment.update_member_balance(@old_amount, @old_member)
+    		@payment.update_member_balance(@payment.amount, @payment.member)
       	format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
         format.json { head :no_content }
       else
@@ -82,7 +78,7 @@ class PaymentsController < ApplicationController
   # DELETE /payments/1.json
   def destroy
     @payment = Payment.find(params[:id])
-   	@payment.update_member_balance(@payment.amount * -1)
+   	@payment.update_member_balance(@payment.amount * -1, @payment.member)
     @payment.destroy
 
     respond_to do |format|

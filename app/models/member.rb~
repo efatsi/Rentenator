@@ -3,7 +3,7 @@ class Member < ActiveRecord::Base
 	
 	#	Relationships
 	belongs_to :family
-	has_many :payments
+	has_many :payments, :dependent => :destroy 
 
 	# Validations
 	validates_presence_of :name

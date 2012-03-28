@@ -63,7 +63,7 @@ class PaymentsController < ApplicationController
     respond_to do |format|
       if @payment.update_attributes(params[:payment])
     		@payment.update_member_balance(@old_amount * -1)
-      	@payment.update_member_balance(@payment.amount * -1)
+      	@payment.update_member_balance(@payment.amount)
       	format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
         format.json { head :no_content }
       else

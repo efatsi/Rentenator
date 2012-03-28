@@ -1,8 +1,11 @@
-<h2>Member Information:</h2>
+<h1>Member</h1>
 
 <b>Name:&nbsp;&nbsp;</b><br>
   <%= @member.name %> <br /><br />
   
 <b>Bills Paid:&nbsp;&nbsp;</b><br>
   <%= @member.bills_paid %> <br /><br />
+  
+<b>Balance:&nbsp;&nbsp;</b><br>
+  <%= @member.balance %> <br /><br />
   

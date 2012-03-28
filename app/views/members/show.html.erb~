@@ -1,22 +1,27 @@
-<p id="notice"><%= notice %></p>
-<table>
-	<tr valign="top">	
-		<td width="300">
-			<%= render :partial => "member_data" %>
-		</td>
-		<td width="10">&nbsp;</td>
-		<td width="250">
-			<% unless @current_payments.empty? %>
-			  <%= render :partial => "current_payments" %>
-			<% end %>
-		</td>
-	</tr>
-</table>
-<p class="sm
-<%= link_to ''%>
-<b><%= link_to 'Destroy it NOW', @member, confirm: 'Are you sure?', method: :delete %> </b> <br /><br />
-<%= link_to 'Families', families_path %> |
-<%= link_to 'Members', members_path %> |
-<%= link_to 'Payments', payments_path %>
+<h1>Member</h1>
 
+<p>
+  <b>Family</b><br>
+  <%= link_to @member.family.name, family_path(@member.family) %>
+</p>
 
+<p>
+  <b>Name</b><br>
+  <%= @member.name %>
+</p>
+
+<p>
+  <b>Bills paid</b><br>
+  <%= @member.bills_paid %>
+</p>
+
+<p>
+  <b>Balance</b><br>
+  <%= @member.balance %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', members_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_member_path(@member), :class => 'btn' %>
+  <%= link_to 'Delete', member_path(@member), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

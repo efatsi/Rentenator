@@ -1,6 +1,5 @@
 class Family < ActiveRecord::Base
 
 	#	Relationships
-	has_many :members, :dependant => :destroy
-	
+	has_many :members, :dependent => :destroy 
 end

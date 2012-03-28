@@ -1,13 +1,13 @@
 <h1>Payment</h1>
 
 <p>
-  <b>Member</b><br>
-  <%= @payment.member_id %>
+  <b>Name</b><br>
+  <%= @payment.name %>
 </p>
 
 <p>
-  <b>Name</b><br>
-  <%= @payment.name %>
+  <b>Member</b><br>
+  <%= link_to @payment.member.name, member_path(@payment.member) %>
 </p>
 
 <p>

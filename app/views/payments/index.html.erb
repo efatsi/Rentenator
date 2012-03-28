@@ -2,18 +2,16 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
+      <th>Name</th>
       <th>Member</th>
-      <th>Created at</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @payments.each do |payment| %>
       <tr>
-        <td><%= payment.id %></td>
-        <td><%= link_to payment.member_id, payment_path(payment) %></td>
-        <td><%= payment.created_at %></td>
+        <td><%= payment.name %></td>
+        <td><%= link_to payment.member.name, member_path(payment.member) %></td>
         <td>
           <%= link_to 'Edit', edit_payment_path(payment), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', payment_path(payment), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
