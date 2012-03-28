@@ -1,11 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+	<h2>Payment Information:</h2>
+	
+	<b>Name:</b>
+  <%= @payment.name %> <br /><br />
+  
+	<b>Member:</b>
+  <%= link_to @payment.member.name, member_path(@payment.member) %> <br /><br />
+  
   <b>Amount:</b>
   <%= @payment.amount %>
 </p>
 
 
-<%= link_to 'Back', payments_path %> |
+<%= link_to 'Families', families_path %> |
 <%= link_to 'Members', members_path %> |
-<%= link_to 'Families', families_path %>
+<%= link_to 'Payments', payments_path %>

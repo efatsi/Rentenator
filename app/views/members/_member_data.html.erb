@@ -3,9 +3,13 @@
 <b>Name:&nbsp;&nbsp;</b><br>
   <%= @member.name %> <br /><br />
   
+<b>Family:&nbsp;&nbsp;</b><br>
+  <%= link_to @member.family.name, family_path(@member.family) %> <br /><br />
+  
 <b>Bills Paid:&nbsp;&nbsp;</b><br>
   <%= @member.bills_paid %> <br /><br />
   
 <b>Balance:&nbsp;&nbsp;</b><br>
   <%= @member.balance %> <br /><br />
+  
   

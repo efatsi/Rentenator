@@ -13,8 +13,6 @@
 	</tr>
 </table>
 <p class="sm
-<%= link_to ''%>
-<b><%= link_to 'Destroy it NOW', @member, confirm: 'Are you sure?', method: :delete %> </b> <br /><br />
 <%= link_to 'Families', families_path %> |
 <%= link_to 'Members', members_path %> |
 <%= link_to 'Payments', payments_path %>

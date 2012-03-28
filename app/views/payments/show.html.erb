@@ -1,7 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Amount:</b>
+	<h2>Payment Information:</h2>
+	
+	<b>Name:</b><br>
+  <%= @payment.name %> <br /><br />
+  
+	<b>Member:</b><br>
+  <%= link_to @payment.member.name, member_path(@payment.member) %> <br /><br />
+  
+  <b>Amount:</b><br>
   <%= @payment.amount %>
 </p>
 
