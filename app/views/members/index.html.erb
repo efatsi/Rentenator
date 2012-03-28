@@ -1,30 +1,27 @@
-<h1>Listing members</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Bills paid</th>
-    <th>Balance</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @members.each do |member| %>
-  <tr>
-    <td><%= member.name %></td>
-    <td><%= member.bills_paid %></td>
-    <td><%= member.balance %></td>
-    <td><%= link_to 'Show', member %></td>
-    <td><%= link_to 'Edit', edit_member_path(member) %></td>
-    <td><%= link_to 'Destroy', member, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Members</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Family</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.id %></td>
+        <td><%= link_to member.family_id, member_path(member) %></td>
+        <td><%= member.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_member_path(member), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', member_path(member), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
+<%= link_to 'New', new_member_path, :class => 'btn btn-primary' %>
 
-<%= link_to 'New Member', new_member_path %> <br /><br />
-<%= link_to 'Families', families_path %> |
-<%= link_to 'Members', members_path %> |
-<%= link_to 'Payments', payments_path %>

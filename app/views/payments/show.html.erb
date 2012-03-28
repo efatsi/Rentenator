@@ -1,11 +1,22 @@
-<p id="notice"><%= notice %></p>
+<h1>Payment</h1>
 
 <p>
-  <b>Amount:</b>
+  <b>Member</b><br>
+  <%= @payment.member_id %>
+</p>
+
+<p>
+  <b>Name</b><br>
+  <%= @payment.name %>
+</p>
+
+<p>
+  <b>Amount</b><br>
   <%= @payment.amount %>
 </p>
 
-
-<%= link_to 'Families', families_path %> |
-<%= link_to 'Members', members_path %> |
-<%= link_to 'Payments', payments_path %>
+<div class="form-actions">
+  <%= link_to 'Back', payments_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_payment_path(@payment), :class => 'btn' %>
+  <%= link_to 'Delete', payment_path(@payment), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

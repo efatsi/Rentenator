@@ -1,25 +1,26 @@
-<h1>Listing families</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @families.each do |family| %>
-  <tr>
-    <td><%= family.name %></td>
-    <td><%= link_to 'Show', family %></td>
-    <td><%= link_to 'Destroy', family, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Familys</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @families.each do |family| %>
+      <tr>
+        <td><%= family.id %></td>
+        <td><%= link_to family.name, family_path(family) %></td>
+        <td><%= family.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_family_path(family), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', family_path(family), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Family', new_family_path %> <br /><br />
-<%= link_to 'Families', families_path %> |
-<%= link_to 'Members', members_path %> |
-<%= link_to 'Payments', payments_path %>
+<%= link_to 'New', new_family_path, :class => 'btn btn-primary' %>
