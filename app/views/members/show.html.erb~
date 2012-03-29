@@ -12,16 +12,16 @@
 		</td>
 	</tr>
 </table>
-<%= button_to "Add ten to balance", add_ten_member_path(@member) %>
+<%= button_to "Add ten to balance (controller method)", add_ten_member_path(@member) %>
 
  <%= form_for @member do |t| %>
      <%= t.hidden_field :balance, :value=>@member.balance - 10 %>
-     <%= t.submit "Subtract 10 from balance" %>
+     <%= t.submit "Subtract 10 from balance (instant button)" %>
    <% end %>
 
    <%= form_for @member do |t| %>
      <%= t.hidden_field :balance, :value=>@member.balance + 10 %>
-     <%= t.submit "Add 10 to balance" %>
+     <%= t.submit "Add 10 to balance (instant button)" %>
    <% end %>
 
 

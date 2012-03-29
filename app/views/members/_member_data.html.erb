@@ -7,8 +7,8 @@
   <%= link_to @member.family.name, family_path(@member.family) %> <br /><br />
   
 <b>Bills Paid&nbsp;&nbsp;</b><br>
-  <%= @member.bills_paid %> <br /><br />
+  <%= (@member.bills_paid*100).round/100.0 %> <br /><br />
   
 <b>Balance&nbsp;&nbsp;</b><br>
-  <%= @member.balance %> <br /><br />
+  <%= (@member.balance*100).round/100.0 %> <br /><br />
   

@@ -3,9 +3,9 @@
     <legend><%= controller.action_name.capitalize %> Member</legend>
 
     <div class="control-group">
-      <%= f.label :family_id, :class => 'control-label' %>
+      <%= f.label :family, :class => 'control-label' %>
       <div class="controls">
-        <%= f.number_field :family_id, :class => 'number_field' %>
+        <%= f.collection_select :family_id, Family.all, :id, :name %>
       </div>
     </div>
 
@@ -16,19 +16,6 @@
       </div>
     </div>
 
-    <div class="control-group">
-      <%= f.label :bills_paid, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :bills_paid, :class => 'text_field' %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :balance, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :balance, :class => 'text_field' %>
-      </div>
-    </div>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
